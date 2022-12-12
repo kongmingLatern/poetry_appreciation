@@ -8,16 +8,110 @@ h3 {
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
+  font-family: 隶书;
 }
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  font-family: 隶书;
+  background-color: #E1E0C7;
 }
 
 .ant-layout .ant-layout-header,
 .ant-layout .ant-layout-sider {
   padding: 0;
   background-color: unset;
+}
+
+.ant-card-cover {
+  flex: 40%;
+}
+
+.ant-card-body {
+  flex: 50%;
+  text-align: center;
+}
+
+.ant-card-meta-title {
+  text-align: center;
+}
+
+.ant-card .ant-card-meta {
+  margin: 10px 0;
+}
+
+.ant-card .ant-card-meta-detail {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.ant-card-meta-description {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-break: break-all;
+}
+
+.ant-card .ant-card-meta-detail>div:not(:last-child) {
+  font-size: 20px;
+}
+
+.ant-layout-content {
+  background-color: #E1E0C7;
+}
+
+.theme_font {
+  font-family: 隶书;
+}
+
+.ant-layout-sider-children {
+  background-color: #E1E0C7;
+}
+
+.clamp_2 {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  word-break: break-all;
+}
+
+.form {
+  margin: 10px auto;
+  width: 400px;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.ant-form-item .ant-form-item-control-input-content {
+  display: flex;
+  align-items: center;
+}
+
+.ant-input:placeholder-shown {
+  height: 45px;
+}
+
+.cover {
+  background-image: url('@/assets/poem.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.ant-input {
+  height: 45px;
 }
