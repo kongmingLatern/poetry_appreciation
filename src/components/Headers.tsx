@@ -4,7 +4,7 @@ export default function Header() {
     window.location.href = '/login'
   }
   return (
-    <h3 className="text-center h-15 lh-15 img text-2xl">
+    <h3 className="text-center h-15 lh-15 img text-4xl">
       诗词鉴赏
     </h3>
   )
