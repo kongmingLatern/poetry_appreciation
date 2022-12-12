@@ -3,6 +3,7 @@ import { FunctionComponent } from 'react'
 import { Layout } from 'antd'
 import LeftAside from '@/components/LeftAside'
 import RightAside from '@/components/RightAside'
+import Contents from '@/components/Contents'
 
 const { Header, Footer, Sider, Content } = Layout
 
@@ -20,7 +21,9 @@ const Home: FunctionComponent<HomeIndexProps> = () => {
           <Sider>
             <LeftAside />
           </Sider>
-          <Content>123123</Content>
+          <Content>
+            <Contents />
+          </Content>
           <Sider>
             <RightAside />
           </Sider>
