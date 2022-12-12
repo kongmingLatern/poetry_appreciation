@@ -115,3 +115,26 @@ body {
 .ant-input {
   height: 45px;
 }
+
+.card {
+  width: 1000px;
+  margin: 0 auto;
+}
+
+.card_img {
+  background-image: url('@/assets/poem1.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.detail-container {
+  background-image: url('@/assets/poem.jpeg');
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.ant-divider-inner-text {
+  font-family: 宋体;
+  font-size: 20px;
+  font-weight: 700;
+}
