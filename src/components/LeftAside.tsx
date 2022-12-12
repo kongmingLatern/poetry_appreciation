@@ -10,7 +10,7 @@ const data = [
 ]
 export default function LeftAside() {
   return (
-    <div className="w-50">
+    <div className="w-50 fixed bg-white">
       <header className="flex justify-around items-center bg-green-500 h-15 rounded">
         <div className="text-lg">
           <UserOutlined className="color-white " />
@@ -31,7 +31,7 @@ export default function LeftAside() {
           bordered
           dataSource={data}
           renderItem={(item, index) => (
-            <List.Item className="bg-white">
+            <List.Item>
               <Link to={'/login'} className="truncate">
                 <span className="mr-2">{index + 1}.</span>
                 {item}
