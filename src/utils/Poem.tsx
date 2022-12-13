@@ -1,14 +1,14 @@
 import { ColumnsType } from 'antd/es/table'
 
 interface PoemType {
-  key: string
-  no: string
+  pid: string
   pname: string
   author: string
   authorDesc: string
   pcontent: string
   pDesc: string
   pAppreciation: string
+  key?: string
 }
 
 export const columns: ColumnsType<PoemType> = [
@@ -16,6 +16,7 @@ export const columns: ColumnsType<PoemType> = [
     title: '编号',
     dataIndex: 'no',
     key: 'no',
+    render: (_, __, index) => index + 1,
   },
   {
     title: '古诗名字',
@@ -51,14 +52,22 @@ export const columns: ColumnsType<PoemType> = [
   {
     title: '操作',
     key: 'action',
-    render: (_, record) => <a>Delete</a>,
+    render: (_, record) => (
+      <a
+        onClick={() => {
+          console.log(record.pid)
+        }}
+      >
+        Delete
+      </a>
+    ),
   },
 ]
 
 export const data: PoemType[] = [
   {
     key: '1',
-    no: '1',
+    pid: '1',
     pname: '绝句',
     author: '李白',
     authorDesc: '按实际吊索具ioa',
@@ -68,7 +77,7 @@ export const data: PoemType[] = [
   },
   {
     key: '2',
-    no: '2',
+    pid: '2',
     pname: '绝句',
     author: '李白',
     authorDesc: '按实际吊索具ioa',
@@ -78,7 +87,7 @@ export const data: PoemType[] = [
   },
   {
     key: '3',
-    no: '3',
+    pid: '3',
     pname: '绝句',
     author: '李白',
     authorDesc: '按实际吊索具ioa',

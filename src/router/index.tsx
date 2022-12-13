@@ -17,7 +17,7 @@ import {
   CommentColumns,
 } from '@/utils'
 import Admin from '@/pages/admin/Admin'
-import { Button } from 'antd'
+import Modal from '@/components/Modal'
 
 export default createBrowserRouter([
   {
@@ -53,9 +53,7 @@ export default createBrowserRouter([
         element: (
           <>
             <div className="text-right p-3">
-              <Button type="primary" size={'middle'}>
-                添加用户
-              </Button>
+              <Modal text={'添加用户'} type={'user'} />
             </div>
             <Table data={UserData} columns={UserColumns} />
           </>
@@ -64,7 +62,12 @@ export default createBrowserRouter([
       {
         path: 'poem',
         element: (
-          <Table data={PoemData} columns={PoemColumns} />
+          <>
+            <div className="text-right p-3">
+              <Modal text={'添加诗句'} type={'poem'} />
+            </div>
+            <Table data={PoemData} columns={PoemColumns} />
+          </>
         ),
       },
       {
