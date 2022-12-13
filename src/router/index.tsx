@@ -1,15 +1,23 @@
-import { createBrowserRouter } from 'react-router-dom'
+import {
+  createBrowserRouter,
+  Navigate,
+} from 'react-router-dom'
 import App from '@/App'
 import Home from '@/pages/home/Home'
 import Login from '@/pages/common/Login'
 import Register from '@/pages/common/Register'
 import Detail from '@/pages/home/Detail'
-import Admin from '@/pages/admin/Admin'
 import Table from '@/components/Table'
 import {
-  data as UserData,
-  columns as UserColumns,
-} from '@/views/admin/User'
+  UserData,
+  UserColumns,
+  PoemData,
+  PoemColumns,
+  CommentData,
+  CommentColumns,
+} from '@/utils'
+import Admin from '@/pages/admin/Admin'
+import { Button } from 'antd'
 
 export default createBrowserRouter([
   {
@@ -37,21 +45,35 @@ export default createBrowserRouter([
     element: <Admin />,
     children: [
       {
+        index: true,
+        element: <Navigate to="/admin/user" replace />,
+      },
+      {
         path: 'user',
         element: (
-          <Table data={UserData} columns={UserColumns} />
+          <>
+            <div className="text-right p-3">
+              <Button type="primary" size={'middle'}>
+                添加用户
+              </Button>
+            </div>
+            <Table data={UserData} columns={UserColumns} />
+          </>
         ),
       },
       {
         path: 'poem',
         element: (
-          <Table data={UserData} columns={UserColumns} />
+          <Table data={PoemData} columns={PoemColumns} />
         ),
       },
       {
         path: 'comment',
         element: (
-          <Table data={UserData} columns={UserColumns} />
+          <Table
+            data={CommentData}
+            columns={CommentColumns}
+          />
         ),
       },
     ],
