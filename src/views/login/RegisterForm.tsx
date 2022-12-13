@@ -26,17 +26,17 @@ const App: React.FC = () => {
     >
       <h3 className="text-2xl mb-2">注册</h3>
       <Form.Item name="username">
-        <>
-          <UserOutlined className="text-xl mr-2" />
-          <Input placeholder="请输入用户名" />
-        </>
+        <Input
+          prefix={<UserOutlined className="text-xl mr-2" />}
+          placeholder="请输入用户名"
+        />
       </Form.Item>
 
       <Form.Item name="password">
-        <>
-          <LockOutlined className="text-xl mr-2" />
-          <Input.Password placeholder="请输入密码" />
-        </>
+        <Input.Password
+          prefix={<LockOutlined className="text-xl mr-2" />}
+          placeholder="请输入密码"
+        />
       </Form.Item>
 
       <Form.Item>
