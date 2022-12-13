@@ -145,3 +145,15 @@ body {
   font-size: 20px;
   font-family: 宋体;
 }
+
+.ant-row {
+  align-items: center;
+}
+
+.ant-input-number-affix-wrapper {
+  width: 100%;
+}
+
+.ant-form-item-control-input-content {
+  justify-content: flex-end;
+}
