@@ -1,11 +1,12 @@
+import http from '@/api'
 import { ColumnsType } from 'antd/es/table'
 
 interface CommentType {
   key?: string
   cid: string
   pname: string
+  username: string
   comment: string
-  commentUser: string
   commentTime: string
   commentLike?: string
   isViolation?: number
@@ -24,14 +25,14 @@ export const columns: ColumnsType<CommentType> = [
     key: 'pname',
   },
   {
-    title: '评论',
+    title: '评论内容',
     dataIndex: 'comment',
     key: 'comment',
   },
   {
     title: '评论用户',
-    dataIndex: 'commentUser',
-    key: 'commentUser',
+    dataIndex: 'username',
+    key: 'username',
   },
   {
     title: '评论时间',
@@ -58,35 +59,40 @@ export const columns: ColumnsType<CommentType> = [
   },
 ]
 
-export const data: CommentType[] = [
-  {
-    key: '1',
-    cid: '1',
-    pname: '绝句',
-    comment: '加上大家爱哦是jio',
-    commentTime: '2021-05-01 12:00:00',
-    commentUser: '陈楷豪',
-    // commentLike: '100',
-    // isViolation: 0,
-  },
-  {
-    key: '2',
-    cid: '2',
-    pname: '绝句',
-    comment: '加上大家爱哦是jio',
-    commentTime: '2021-05-01 12:00:11',
-    commentUser: '陈楷豪',
-    // commentLike: '122',
-    // isViolation: 1,
-  },
-  {
-    key: '3',
-    cid: '3',
-    pname: '绝句',
-    comment: '加上大家爱哦是',
-    commentTime: '2021-05-01 12:00:21',
-    commentUser: '陈楷豪',
-    // commentLike: '131',
-    // isViolation: 0,
-  },
-]
+// export const data: CommentType[] = [
+//   {
+//     key: '1',
+//     cid: '1',
+//     pname: '绝句',
+//     comment: '加上大家爱哦是jio',
+//     commentTime: '2021-05-01 12:00:00',
+//     username: '陈楷豪',
+//     // commentLike: '100',
+//     // isViolation: 0,
+//   },
+//   {
+//     key: '2',
+//     cid: '2',
+//     pname: '绝句',
+//     comment: '加上大家爱哦是jio',
+//     commentTime: '2021-05-01 12:00:11',
+//     username: '陈楷豪',
+//     // commentLike: '122',
+//     // isViolation: 1,
+//   },
+//   {
+//     key: '3',
+//     cid: '3',
+//     pname: '绝句',
+//     comment: '加上大家爱哦是',
+//     commentTime: '2021-05-01 12:00:21',
+//     username: '陈楷豪',
+//     // commentLike: '131',
+//     // isViolation: 0,
+//   },
+// ]
+
+export async function getCommentData() {
+  const res = await http.get('/getAllComment')
+  return res.data
+}
