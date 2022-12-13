@@ -157,3 +157,7 @@ body {
 .ant-form-item-control-input-content {
   justify-content: flex-end;
 }
+
+.ant-list .ant-list-item .ant-list-item-meta {
+  align-items: center;
+}
