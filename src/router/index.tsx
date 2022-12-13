@@ -9,11 +9,11 @@ import Register from '@/pages/common/Register'
 import Detail from '@/pages/home/Detail'
 import Table from '@/components/Table'
 import {
-  UserData,
+  getData,
+  getPoemData,
+  getCommentData,
   UserColumns,
-  PoemData,
   PoemColumns,
-  CommentData,
   CommentColumns,
 } from '@/utils'
 import Admin from '@/pages/admin/Admin'
@@ -37,7 +37,7 @@ export default createBrowserRouter([
     element: <Register />,
   },
   {
-    path: '/poem/detail',
+    path: '/poem/detail/:pid',
     element: <Detail />,
   },
   {
@@ -55,7 +55,7 @@ export default createBrowserRouter([
             <div className="text-right p-3">
               <Modal text={'添加用户'} type={'user'} />
             </div>
-            <Table data={UserData} columns={UserColumns} />
+            <Table func={getData} columns={UserColumns} />
           </>
         ),
       },
@@ -66,7 +66,10 @@ export default createBrowserRouter([
             <div className="text-right p-3">
               <Modal text={'添加诗句'} type={'poem'} />
             </div>
-            <Table data={PoemData} columns={PoemColumns} />
+            <Table
+              func={getPoemData}
+              columns={PoemColumns}
+            />
           </>
         ),
       },
@@ -74,7 +77,7 @@ export default createBrowserRouter([
         path: 'comment',
         element: (
           <Table
-            data={CommentData}
+            func={getCommentData}
             columns={CommentColumns}
           />
         ),
