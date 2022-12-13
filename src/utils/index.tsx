@@ -1,21 +1,21 @@
 import {
-  data as UserData,
   columns as UserColumns,
+  getData,
 } from '@/utils/User'
 import {
-  data as PoemData,
   columns as PoemColumns,
+  getPoemData,
 } from '@/utils/Poem'
 import {
-  data as CommentData,
   columns as CommentColumns,
+  getCommentData,
 } from '@/utils/Comment'
 
 export {
-  UserData,
+  getData,
+  getPoemData,
+  getCommentData,
   UserColumns,
-  PoemData,
   PoemColumns,
-  CommentData,
   CommentColumns,
 }

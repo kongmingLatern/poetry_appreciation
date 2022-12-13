@@ -1,4 +1,6 @@
+import http from '@/api'
 import { ColumnsType } from 'antd/es/table'
+import { useState } from 'react'
 
 interface UserType {
   uid: string
@@ -45,26 +47,8 @@ export const columns: ColumnsType<UserType> = [
   },
 ]
 
-export const data: UserType[] = [
-  {
-    uid: '1',
-    key: '1',
-    username: 'John Brown',
-    password: '123123',
-    isAuth: 0,
-  },
-  {
-    uid: '2',
-    key: '2',
-    username: 'John Brown123123',
-    password: '123123r34',
-    isAuth: 0,
-  },
-  {
-    uid: '3',
-    key: '3',
-    username: 'John Brown12313',
-    password: '12312qweqwe3',
-    isAuth: 1,
-  },
-]
+
+export async function getData() {
+  const res = await http.get('/getAllUser')
+  return res.data
+}

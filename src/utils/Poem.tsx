@@ -1,3 +1,4 @@
+import http from '@/api'
 import { ColumnsType } from 'antd/es/table'
 
 interface PoemType {
@@ -64,35 +65,40 @@ export const columns: ColumnsType<PoemType> = [
   },
 ]
 
-export const data: PoemType[] = [
-  {
-    key: '1',
-    pid: '1',
-    pname: '绝句',
-    author: '李白',
-    authorDesc: '按实际吊索具ioa',
-    pcontent: '按实际吊索具ioa',
-    pDesc: '按实际吊索具ioa',
-    pAppreciation: '按实际吊索具ioa',
-  },
-  {
-    key: '2',
-    pid: '2',
-    pname: '绝句',
-    author: '李白',
-    authorDesc: '按实际吊索具ioa',
-    pcontent: '按实际吊索具ioa',
-    pDesc: '按实际吊索具ioa',
-    pAppreciation: '按实际吊索具ioa',
-  },
-  {
-    key: '3',
-    pid: '3',
-    pname: '绝句',
-    author: '李白',
-    authorDesc: '按实际吊索具ioa',
-    pcontent: '按实际吊索具ioa',
-    pDesc: '按实际吊索具ioa',
-    pAppreciation: '按实际吊索具ioa',
-  },
-]
+// export const data: PoemType[] = [
+//   {
+//     key: '1',
+//     pid: '1',
+//     pname: '绝句',
+//     author: '李白',
+//     authorDesc: '按实际吊索具ioa',
+//     pcontent: '按实际吊索具ioa',
+//     pDesc: '按实际吊索具ioa',
+//     pAppreciation: '按实际吊索具ioa',
+//   },
+//   {
+//     key: '2',
+//     pid: '2',
+//     pname: '绝句',
+//     author: '李白',
+//     authorDesc: '按实际吊索具ioa',
+//     pcontent: '按实际吊索具ioa',
+//     pDesc: '按实际吊索具ioa',
+//     pAppreciation: '按实际吊索具ioa',
+//   },
+//   {
+//     key: '3',
+//     pid: '3',
+//     pname: '绝句',
+//     author: '李白',
+//     authorDesc: '按实际吊索具ioa',
+//     pcontent: '按实际吊索具ioa',
+//     pDesc: '按实际吊索具ioa',
+//     pAppreciation: '按实际吊索具ioa',
+//   },
+// ]
+
+export async function getPoemData() {
+  const res = await http.get('/getAllPoem')
+  return res.data
+}
