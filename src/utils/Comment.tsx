@@ -1,5 +1,6 @@
 import http from '@/api'
 import { ColumnsType } from 'antd/es/table'
+import { remove } from './User'
 
 interface CommentType {
   key?: string
@@ -54,7 +55,9 @@ export const columns: ColumnsType<CommentType> = [
     title: '操作',
     key: 'action',
     render: (_, record) => (
-      <a onClick={() => console.log(record.cid)}>删除</a>
+      <a onClick={() => remove('comment', record.cid)}>
+        删除
+      </a>
     ),
   },
 ]

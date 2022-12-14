@@ -1,5 +1,6 @@
 import http from '@/api'
 import { ColumnsType } from 'antd/es/table'
+import { remove } from './User'
 
 interface PoemType {
   pid: string
@@ -54,11 +55,7 @@ export const columns: ColumnsType<PoemType> = [
     title: '操作',
     key: 'action',
     render: (_, record) => (
-      <a
-        onClick={() => {
-          console.log(record.pid)
-        }}
-      >
+      <a onClick={() => remove('poem', record.pid)}>
         Delete
       </a>
     ),

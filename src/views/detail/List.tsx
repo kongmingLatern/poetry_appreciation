@@ -42,10 +42,12 @@ const releaseComment = async (comment, pid) => {
   )
   if (res.code === 200) {
     message.success(res.msg)
+    setTimeout(() => {
+      window.location.reload()
+    }, 500)
   } else {
     message.error(res.msg)
   }
-  window.location.reload()
 }
 
 const App: any = ({ comments, pid }) => {

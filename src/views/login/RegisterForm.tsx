@@ -9,15 +9,19 @@ import { useNavigate } from 'react-router-dom'
 const App: React.FC = () => {
   const navigate = useNavigate()
   const onFinish = async (values: any) => {
-    const res: Record<string, any> = await http.post(
-      'register',
-      values
-    )
-    if (res.code === 200) {
-      message.success(res.msg)
-      navigate('/login')
+    if (!values) {
+      const res: Record<string, any> = await http.post(
+        'register',
+        values
+      )
+      if (res.code === 200) {
+        message.success(res.msg)
+        navigate('/login')
+      } else {
+        message.error(res.msg)
+      }
     } else {
-      message.error(res.msg)
+      message.error('请输入用户名和密码')
     }
   }
 

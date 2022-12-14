@@ -4,34 +4,46 @@ import {
   UserOutlined,
 } from '@ant-design/icons'
 import { Button, Form, Input, message, Space } from 'antd'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
 const App: React.FC = () => {
+  const navigate = useNavigate()
+  useEffect(() => {
+    const uid = localStorage.getItem('uid')
+    if (uid) {
+      // 自动登录
+      navigate('/home')
+      message.success('自动登录')
+    }
+  }, [])
   const onFinish = async (values: any) => {
-    const res: Record<string, any> = await http.post(
-      '/login',
-      values
-    )
-    if (res.code === 200) {
-      const { uid, isAuth } = res.data
-      localStorage.setItem('uid', uid)
-      localStorage.setItem('isAuth', isAuth)
-      message.success(res.msg)
-      if (isAuth) {
-        navigate('/admin')
+    if (!values) {
+      const res: Record<string, any> = await http.post(
+        '/login',
+        values
+      )
+      if (res.code === 200) {
+        const { uid, isAuth } = res.data
+        localStorage.setItem('uid', uid)
+        localStorage.setItem('isAuth', isAuth)
+        message.success(res.msg)
+        if (isAuth) {
+          navigate('/admin')
+        } else {
+          navigate('/home')
+        }
       } else {
-        navigate('/home')
+        message.error(res.msg)
       }
     } else {
-      message.error(res.msg)
+      message.error('请输入用户名和密码')
     }
   }
 
   const onFinishFailed = (errorInfo: any) => {
     console.log('Failed:', errorInfo)
   }
-
-  const navigate = useNavigate()
 
   return (
     <Form
@@ -41,7 +53,7 @@ const App: React.FC = () => {
       autoComplete="off"
       className="form rounded"
     >
-      <h3 className="text-2xl">登录</h3>
+      <h3 className="text-4xl mb-2">登录</h3>
       <Form.Item name="username">
         <Input
           prefix={<UserOutlined className="text-xl mr-2" />}

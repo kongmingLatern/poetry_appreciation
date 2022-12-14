@@ -23,6 +23,12 @@ export default createBrowserRouter([
   {
     path: '/',
     element: <App />,
+    children: [
+      {
+        index: true,
+        element: <Navigate to="/home" replace />,
+      },
+    ],
   },
   {
     path: '/home',

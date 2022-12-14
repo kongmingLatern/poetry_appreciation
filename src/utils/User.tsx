@@ -10,7 +10,7 @@ interface UserType {
   isAuth: number
 }
 
-async function remove(type: string, id: string) {
+export async function remove(type: string, id: string) {
   let res
   switch (type) {
     case 'comment':
@@ -39,6 +39,7 @@ async function remove(type: string, id: string) {
   } else {
     message.error(res.msg)
   }
+  window.location.reload()
 }
 
 export const columns: ColumnsType<UserType> = [
