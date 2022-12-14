@@ -1,14 +1,39 @@
-import { Button, Form, Input, InputNumber } from 'antd'
+import {
+  Button,
+  Form,
+  Input,
+  InputNumber,
+  message,
+} from 'antd'
 import {
   FileTextOutlined,
   LockOutlined,
   UserOutlined,
   UserSwitchOutlined,
 } from '@ant-design/icons'
+import http from '@/api'
 
-const App = ({ type }) => {
-  const onFinish = (values: any) => {
+const App = ({ type, isShow }) => {
+  const onFinish = async (values: any) => {
     console.log('Success:', values)
+    let res
+    if (type === 'user') {
+      res = await http.post('/register', values)
+    } else if (type === 'poem') {
+      res = await http.post('/addPoem', {
+        ...values,
+        pcontent: [values.pcontent],
+      })
+    } else if (type === 'comment') {
+      res = await http.post('/addComment', values)
+    }
+    if (res.code === 200) {
+      message.success(res.msg)
+    } else {
+      message.error(res.msg)
+    }
+    window.location.reload()
+    isShow()
   }
 
   const onFinishFailed = (errorInfo: any) => {
