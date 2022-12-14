@@ -1,13 +1,30 @@
+import http from '@/api'
 import {
   LockOutlined,
   UserOutlined,
 } from '@ant-design/icons'
-import { Button, Checkbox, Form, Input, Space } from 'antd'
+import { Button, Form, Input, message, Space } from 'antd'
 import { useNavigate } from 'react-router-dom'
 
 const App: React.FC = () => {
-  const onFinish = (values: any) => {
-    console.log('Success:', values)
+  const onFinish = async (values: any) => {
+    const res: Record<string, any> = await http.post(
+      '/login',
+      values
+    )
+    if (res.code === 200) {
+      const { uid, isAuth } = res.data
+      localStorage.setItem('uid', uid)
+      localStorage.setItem('isAuth', isAuth)
+      message.success(res.msg)
+      if (isAuth) {
+        navigate('/admin')
+      } else {
+        navigate('/home')
+      }
+    } else {
+      message.error(res.msg)
+    }
   }
 
   const onFinishFailed = (errorInfo: any) => {
@@ -19,7 +36,6 @@ const App: React.FC = () => {
   return (
     <Form
       name="basic"
-      initialValues={{ remember: true }}
       onFinish={onFinish}
       onFinishFailed={onFinishFailed}
       autoComplete="off"
@@ -38,10 +54,6 @@ const App: React.FC = () => {
           prefix={<LockOutlined className="text-xl mr-2" />}
           placeholder="请输入密码"
         />
-      </Form.Item>
-
-      <Form.Item name="remember" valuePropName="checked">
-        <Checkbox>记住密码</Checkbox>
       </Form.Item>
 
       <Form.Item>
