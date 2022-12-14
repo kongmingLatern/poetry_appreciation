@@ -3,7 +3,8 @@ import axios from 'axios'
 
 const http = axios.create({
   baseURL:
-    'https://www.fastmock.site/mock/b7c562a03fcc1946be0bd09b2b30214f/api',
+    // 'https://www.fastmock.site/mock/b7c562a03fcc1946be0bd09b2b30214f/api',
+    'http://localhost:8080/',
 })
 
 // 请求拦截器
