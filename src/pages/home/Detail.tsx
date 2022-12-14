@@ -3,21 +3,19 @@ import Header from '@/components/Headers'
 import List from '@/views/detail/List'
 import { Divider } from 'antd'
 import { useEffect, useState } from 'react'
+import { useParams } from 'react-router-dom'
 export default function Detail() {
   const [data, setData] = useState<any>({})
+  const param = useParams()
   useEffect(() => {
     async function getData() {
-      const res = await http.get('/getPoemByPid', {
-        params: {
-          pid: '123',
-        },
+      const res = await http.post('/getPoemByPid', {
+        pid: param.pid,
       })
       setData(res.data)
     }
     getData()
   }, [])
-
-  console.log(data.pcontent)
 
   const detail = (
     <div className="detail-container">
@@ -47,7 +45,7 @@ export default function Detail() {
         <Divider className="bg-white h-10 lh-10 text-2xl">
           用户评论
         </Divider>
-        <List comments={data.comments} />
+        <List comments={data.comments} pid={data.pid} />
       </div>
     </div>
   )

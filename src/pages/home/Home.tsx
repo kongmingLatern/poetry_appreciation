@@ -28,7 +28,7 @@ const Home: FunctionComponent<HomeIndexProps> = () => {
             <RightAside />
           </Sider>
         </Layout>
-        <Footer>Footer</Footer>
+        {/* <Footer>Footer</Footer> */}
       </Layout>
     </>
   )
