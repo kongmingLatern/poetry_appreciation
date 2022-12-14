@@ -1,6 +1,14 @@
-import { Avatar, Button, Input, List, Space } from 'antd'
+import {
+  Avatar,
+  Button,
+  Input,
+  List,
+  message,
+  Space,
+} from 'antd'
 import { LikeOutlined } from '@ant-design/icons'
-import React from 'react'
+import React, { useState } from 'react'
+import http from '@/api'
 
 const IconText = ({
   icon,
@@ -16,12 +24,32 @@ const IconText = ({
 )
 
 const { TextArea } = Input
-const onChange = (
-  e: React.ChangeEvent<HTMLTextAreaElement>
-) => {
-  console.log('Change:', e.target.value)
+
+const releaseComment = async (comment, pid) => {
+  const uid = localStorage.getItem('uid')
+  if (uid === 'undefined') {
+    message.error('请先登录')
+    window.location.href = '/login'
+    return
+  }
+  const res: Record<string, any> = await http.post(
+    '/addComment',
+    {
+      uid,
+      comment,
+      pid,
+    }
+  )
+  if (res.code === 200) {
+    message.success(res.msg)
+  } else {
+    message.error(res.msg)
+  }
+  window.location.reload()
 }
-const App: any = ({ comments }) => {
+
+const App: any = ({ comments, pid }) => {
+  const [value, setValue] = useState<string>('')
   const result = (
     <>
       <div className="text-right pr-5 w-100 mx-auto">
@@ -30,10 +58,17 @@ const App: any = ({ comments }) => {
           showCount
           maxLength={100}
           placeholder="输入评论"
+          onChange={e => setValue(e.target.value)}
+          onPressEnter={() => releaseComment(value, pid)}
         />
       </div>
       <div className="text-right">
-        <Button type="primary">发布评论</Button>
+        <Button
+          type="primary"
+          onClick={() => releaseComment(value, pid)}
+        >
+          发布评论
+        </Button>
       </div>
       <List
         className="p-2"
