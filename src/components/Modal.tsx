@@ -24,7 +24,7 @@ const App = props => {
         onCancel={handleCancel}
         footer={null}
       >
-        <Form {...props} />
+        <Form {...props} isShow={handleCancel} />
       </Modal>
     </>
   )
