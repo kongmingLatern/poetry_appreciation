@@ -18,7 +18,7 @@ const App: React.FC = () => {
     }
   }, [])
   const onFinish = async (values: any) => {
-    if (!values) {
+    if (values) {
       const res: Record<string, any> = await http.post(
         '/login',
         values

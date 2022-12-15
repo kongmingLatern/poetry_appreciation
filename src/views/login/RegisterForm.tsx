@@ -9,13 +9,13 @@ import { useNavigate } from 'react-router-dom'
 const App: React.FC = () => {
   const navigate = useNavigate()
   const onFinish = async (values: any) => {
-    if (!values) {
+    if (values) {
       const res: Record<string, any> = await http.post(
         'register',
         values
       )
       if (res.code === 200) {
-        message.success(res.msg)
+        message.success('注册成功')
         navigate('/login')
       } else {
         message.error(res.msg)

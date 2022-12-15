@@ -26,8 +26,9 @@ const IconText = ({
 const { TextArea } = Input
 
 const releaseComment = async (comment, pid) => {
-  const uid = localStorage.getItem('uid')
-  if (uid === 'undefined') {
+  const uid = localStorage.getItem('uid') ?? null
+
+  if (uid === 'undefined' || uid === null) {
     message.error('请先登录')
     window.location.href = '/login'
     return
@@ -76,7 +77,7 @@ const App: any = ({ comments, pid }) => {
         className="p-2"
         itemLayout="horizontal"
         dataSource={comments}
-        renderItem={item => (
+        renderItem={(item: any) => (
           <List.Item
           // actions={[
           //   <IconText
