@@ -1,16 +1,20 @@
+import http from '@/api'
 import { UserOutlined } from '@ant-design/icons'
 import { Button, List, message } from 'antd'
-import { Link, useNavigate } from 'react-router-dom'
-const data = [
-  'Racing car sprays burning fuel into crowd.',
-  'Japanese princess to wed commoner.',
-  'Australian walks 100km after outback crash.',
-  'Man charged over missing wedding girl.',
-  'Los Angeles battles huge wildfires.',
-]
+import { useEffect, useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 
 export default function LeftAside() {
   const navigate = useNavigate()
+  const [data, setData] = useState([])
+  useEffect(() => {
+    async function getData() {
+      const res = await http.get('/getAllNews')
+      setData(res.data)
+    }
+    getData()
+  }, [])
+  console.log(data)
   function exit() {
     localStorage.clear()
     setTimeout(() => {
@@ -47,12 +51,12 @@ export default function LeftAside() {
           }
           bordered
           dataSource={data}
-          renderItem={(item, index) => (
+          renderItem={(item: any, index) => (
             <List.Item>
-              <Link to={'/login'} className="truncate">
+              <span className="truncate">
                 <span className="mr-2">{index + 1}.</span>
-                {item}
-              </Link>
+                {item.newsName}
+              </span>
             </List.Item>
           )}
         />
