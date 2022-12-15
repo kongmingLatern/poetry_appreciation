@@ -15,7 +15,6 @@ import http from '@/api'
 
 const App = ({ type, isShow }) => {
   const onFinish = async (values: any) => {
-    console.log('Success:', values)
     let res
     if (type === 'user') {
       res = await http.post('/register', values)
