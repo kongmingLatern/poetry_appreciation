@@ -79,13 +79,13 @@ const App: any = ({ comments, pid }) => {
         dataSource={comments}
         renderItem={(item: any) => (
           <List.Item
-          // actions={[
-          //   <IconText
-          //     icon={LikeOutlined}
-          //     // text="156"
-          //     key="list-vertical-like-o"
-          //   />,
-          // ]}
+          actions={[
+            <IconText
+              icon={LikeOutlined}
+              text="156"
+              key="list-vertical-like-o"
+            />,
+          ]}
           >
             <List.Item.Meta
               avatar={

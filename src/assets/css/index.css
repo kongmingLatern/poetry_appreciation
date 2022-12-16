@@ -1,7 +1,7 @@
 @import "open-props/style";
 
 .img {
-  background-image: url('@/assets/poem1.jpeg');
+  background-image: url('@/assets/poem5.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -120,17 +120,19 @@ body {
 
 .card {
   width: 1000px;
-  margin: 0 auto;
+  margin: 10px auto;
+  padding: 10px;
 }
 
 .card_img {
-  background-image: url('@/assets/poem1.jpeg');
+  background-image: url('@/assets/poem5.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
+  padding: 20px;
 }
 
 .detail-container {
-  background-image: url('@/assets/poem.jpeg');
+  background-image: url('@/assets/poem4.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
 }
