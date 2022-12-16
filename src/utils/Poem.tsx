@@ -1,6 +1,6 @@
 import http from '@/api'
+import Change from '@/components/Change'
 import { ColumnsType } from 'antd/es/table'
-import { remove } from './User'
 
 interface PoemType {
   pid: string
@@ -55,45 +55,14 @@ export const columns: ColumnsType<PoemType> = [
     title: '操作',
     key: 'action',
     render: (_, record) => (
-      <a onClick={() => remove('poem', record.pid)}>
-        Delete
-      </a>
+      <Change
+        text={'修改信息'}
+        type="poem"
+        id={record.pid}
+      />
     ),
   },
 ]
-
-// export const data: PoemType[] = [
-//   {
-//     key: '1',
-//     pid: '1',
-//     pname: '绝句',
-//     author: '李白',
-//     authorDesc: '按实际吊索具ioa',
-//     pcontent: '按实际吊索具ioa',
-//     pDesc: '按实际吊索具ioa',
-//     pAppreciation: '按实际吊索具ioa',
-//   },
-//   {
-//     key: '2',
-//     pid: '2',
-//     pname: '绝句',
-//     author: '李白',
-//     authorDesc: '按实际吊索具ioa',
-//     pcontent: '按实际吊索具ioa',
-//     pDesc: '按实际吊索具ioa',
-//     pAppreciation: '按实际吊索具ioa',
-//   },
-//   {
-//     key: '3',
-//     pid: '3',
-//     pname: '绝句',
-//     author: '李白',
-//     authorDesc: '按实际吊索具ioa',
-//     pcontent: '按实际吊索具ioa',
-//     pDesc: '按实际吊索具ioa',
-//     pAppreciation: '按实际吊索具ioa',
-//   },
-// ]
 
 export async function getPoemData() {
   const res = await http.get('/getAllPoem')

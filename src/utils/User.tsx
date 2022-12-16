@@ -1,6 +1,8 @@
 import http from '@/api'
+import Change from '@/components/Change'
 import { message } from 'antd'
 import { ColumnsType } from 'antd/es/table'
+import { remove } from '.'
 
 interface UserType {
   uid: string
@@ -8,38 +10,6 @@ interface UserType {
   username: string
   password: string
   isAuth: number
-}
-
-export async function remove(type: string, id: string) {
-  let res
-  switch (type) {
-    case 'comment':
-      res = await http.delete('/deleteComment', {
-        params: {
-          cid: id,
-        },
-      })
-      break
-    case 'poem':
-      res = await http.delete('/deletePoem', {
-        params: {
-          pid: id,
-        },
-      })
-      break
-    case 'user':
-      res = await http.delete('/deleteUser', {
-        params: {
-          uid: id,
-        },
-      })
-  }
-  if (res.code === 200) {
-    message.success(res.msg)
-  } else {
-    message.error(res.msg)
-  }
-  window.location.reload()
 }
 
 export const columns: ColumnsType<UserType> = [
@@ -68,9 +38,11 @@ export const columns: ColumnsType<UserType> = [
     title: '操作',
     key: 'action',
     render: (_, record) => (
-      <a onClick={() => remove('user', record.uid)}>
-        Delete
-      </a>
+      <Change
+        text={'修改信息'}
+        type="user"
+        id={record.uid}
+      />
     ),
   },
 ]

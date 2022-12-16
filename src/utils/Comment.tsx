@@ -1,6 +1,6 @@
 import http from '@/api'
 import { ColumnsType } from 'antd/es/table'
-import { remove } from './User'
+import { remove } from '.'
 
 interface CommentType {
   key?: string
