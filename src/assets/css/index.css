@@ -1,5 +1,7 @@
+@import "open-props/style";
+
 .img {
-  background-image: url('@/assets/header.png');
+  background-image: url('@/assets/poem1.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -8,14 +10,14 @@ h3 {
   text-align: center;
   margin-top: 0;
   margin-bottom: 0;
-  font-family: 隶书;
+  font-family: '幼圆';
 }
 
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: 隶书;
+  font-family: '幼圆';
   background-color: #E1E0C7;
 }
 
@@ -100,7 +102,7 @@ body {
 }
 
 .cover {
-  background-image: url('@/assets/poem.jpeg');
+  background-image: url('@/assets/poem2.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
 }
@@ -160,4 +162,8 @@ body {
 
 .ant-list .ant-list-item .ant-list-item-meta {
   align-items: center;
+}
+
+.ant-card .ant-card-body {
+  padding: 0;
 }
