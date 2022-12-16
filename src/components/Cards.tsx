@@ -6,8 +6,8 @@ import SearchInput from './SearchInput'
 
 const { Meta } = Card
 
-export default function Cards(): any {
-  const [data, setData] = useState<any>([])
+export default function Cards() {
+  const [data, setData] = useState<any[]>([])
   const navigate = useNavigate()
 
   useEffect(() => {
@@ -20,15 +20,18 @@ export default function Cards(): any {
 
   return (
     <>
+      <header className="h-15 lh-15 text-2xl bg-red-500 color-white mx-5">
+        <h3>古诗一览</h3>
+      </header>
       <SearchInput />
-      <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-2">
+      <div className="grid 2xl:grid-cols-5 xl:grid-cols-4 lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1  gap-5 mt-3 px-10 justify-items-center content-center">
         {data.map((item, key) => {
           return (
             <Card
               hoverable
               key={key}
               cover={
-                <div className="text-center pt-5">
+                <div className="text-center p-5">
                   <h3 className="text-3xl">{item.pname}</h3>
                   <p className="text-md">
                     作者：{item.author}

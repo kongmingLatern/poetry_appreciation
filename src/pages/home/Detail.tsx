@@ -1,12 +1,34 @@
 import http from '@/api'
 import Header from '@/components/Headers'
 import List from '@/views/detail/List'
-import { Divider } from 'antd'
+import AuthorDesc from '@/views/home/AuthorDesc'
+import PAppreciation from '@/views/home/PAppreciation'
+import PDesc from '@/views/home/PDesc'
+import { Divider, Tabs } from 'antd'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import UserComments from '../../views/home/UserComments'
 export default function Detail() {
   const [data, setData] = useState<any>({})
   const param = useParams()
+  const list = [
+    {
+      label: '作者介绍',
+      element: <AuthorDesc data={data} />,
+    },
+    {
+      label: '古诗介绍',
+      element: <PDesc data={data} />,
+    },
+    {
+      label: '诗句鉴赏',
+      element: <PAppreciation data={data} />,
+    },
+    {
+      label: '用户评论',
+      element: <UserComments data={data} />,
+    },
+  ]
   useEffect(() => {
     async function getData() {
       const res = await http.post('/getPoemByPid', {
@@ -29,23 +51,18 @@ export default function Detail() {
               <p className="text-5">{item}</p>
             ))}
         </div>
-        <Divider className="bg-white h-10 lh-10 text-2xl">
-          作者介绍
-        </Divider>
-        <p className="text-xl p-5">{data.authorDesc}</p>
-        <Divider className="bg-white h-10 lh-10 text-2xl">
-          古诗介绍
-        </Divider>
-
-        <p className="text-xl p-5">{data.pDesc}</p>
-        <Divider className="bg-white h-10 lh-10 text-2xl">
-          诗句鉴赏
-        </Divider>
-        <p className="text-xl p-5">{data.pAppreciation}</p>
-        <Divider className="bg-white h-10 lh-10 text-2xl">
-          用户评论
-        </Divider>
-        <List comments={data.comments} pid={data.pid} />
+        <Tabs
+          defaultActiveKey="1"
+          centered
+          items={list.map((item, i) => {
+            const id = String(i + 1)
+            return {
+              label: item.label,
+              key: id,
+              children: item.element,
+            }
+          })}
+        />
       </div>
     </div>
   )

@@ -2,7 +2,6 @@ import Article from '@/views/home/Article'
 import Culture from '@/views/home/Culture'
 import { Tabs } from 'antd'
 import Cards from './Cards'
-// import SearchInput from './SearchInput'
 
 export default function Contents() {
   const arr = [
