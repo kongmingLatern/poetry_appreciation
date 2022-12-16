@@ -11,6 +11,7 @@ export default function SearchInput() {
         onSearch={onSearch}
         enterButton
         className="w-70"
+        size={'large'}
       />
     </div>
   )
