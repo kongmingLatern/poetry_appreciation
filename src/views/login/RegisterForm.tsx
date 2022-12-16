@@ -4,7 +4,7 @@ import {
   UserOutlined,
 } from '@ant-design/icons'
 import { Button, Form, Input, message, Space } from 'antd'
-import { useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 
 const App: React.FC = () => {
   const navigate = useNavigate()
@@ -38,7 +38,7 @@ const App: React.FC = () => {
       autoComplete="off"
       className="form rounded"
     >
-      <h3 className="text-4xl mb-2">注册会员</h3>
+      <h3 className="text-2xl mb-2">注册</h3>
       <Form.Item name="username">
         <Input
           prefix={<UserOutlined className="text-xl mr-2" />}
@@ -56,19 +56,14 @@ const App: React.FC = () => {
       <Form.Item>
         <div className="w-100 text-center">
           <Space direction="vertical" size={'large'}>
+            <div className="text-right">
+              已有账号？去
+              <Link to={'/login'}>登录</Link>
+            </div>
             <Button
               type="primary"
               htmlType="submit"
               className="w-80"
-              onClick={() => navigate('/login')}
-            >
-              去登录
-            </Button>
-            <Button
-              type="primary"
-              htmlType="submit"
-              className="w-80"
-              danger
             >
               注册
             </Button>

@@ -2,7 +2,6 @@ import {
   createBrowserRouter,
   Navigate,
 } from 'react-router-dom'
-import App from '@/App'
 import Home from '@/pages/home/Home'
 import Login from '@/pages/common/Login'
 import Register from '@/pages/common/Register'
@@ -22,17 +21,16 @@ import Modal from '@/components/Modal'
 export default createBrowserRouter([
   {
     path: '/',
-    element: <App />,
     children: [
       {
         index: true,
         element: <Navigate to="/home" replace />,
       },
+      {
+        path: 'home',
+        element: <Home />,
+      },
     ],
-  },
-  {
-    path: '/home',
-    element: <Home />,
   },
   {
     path: '/login',
