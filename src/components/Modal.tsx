@@ -15,7 +15,12 @@ const App = props => {
 
   return (
     <>
-      <Button type="primary" onClick={showModal}>
+      <Button
+        type={'dashed'}
+        onClick={showModal}
+        className="bg-orange-500 color-white"
+        size='large'
+      >
         {props.text}
       </Button>
       <Modal

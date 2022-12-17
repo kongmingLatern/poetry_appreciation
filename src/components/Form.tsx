@@ -62,12 +62,16 @@ const App = ({ type, isShow }) => {
               placeholder="请输入密码"
             />
           </Form.Item>
-          <Form.Item label="是否享有权限" name="isAuth">
+          <Form.Item label="权限" name="isAuth">
             <InputNumber
+              style={{
+                height: '45px',
+                alignItems: 'center',
+              }}
               min={0}
               max={1}
               prefix={<UserSwitchOutlined />}
-              placeholder="是否享有权限，0为否，1为是"
+              placeholder="权限设置，0为否，1为是"
             />
           </Form.Item>
         </>
@@ -116,7 +120,7 @@ const App = ({ type, isShow }) => {
       )}
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
+        <Button type="primary" htmlType="submit" danger>
           提交
         </Button>
       </Form.Item>

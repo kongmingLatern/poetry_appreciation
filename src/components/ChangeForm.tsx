@@ -16,8 +16,6 @@ import { useEffect, useState } from 'react'
 
 const App = ({ type, isShow, id }) => {
   const onFinish = async (values: any) => {
-    console.log(values)
-
     let res
     if (type === 'user') {
       res = await http.put('/updateUser', {
@@ -178,8 +176,12 @@ const App = ({ type, isShow, id }) => {
       )}
 
       <Form.Item>
-        <Button type="primary" htmlType="submit">
-          提交
+        <Button
+          htmlType="submit"
+          className="bg-green-500 color-white"
+          size="large"
+        >
+          修改
         </Button>
       </Form.Item>
     </Form>

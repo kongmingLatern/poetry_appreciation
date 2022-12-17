@@ -1,5 +1,5 @@
 import { remove } from '@/utils'
-import { Modal, Space } from 'antd'
+import { Button, Modal, Space } from 'antd'
 import { useState } from 'react'
 import ChangeForm from './ChangeForm'
 
@@ -17,10 +17,15 @@ export default function Change(props) {
   return (
     <>
       <Space>
-        <a onClick={showModal}>修改</a>
-        <a onClick={() => remove('poem', props.id)}>
-          Delete
-        </a>
+        <Button onClick={showModal} type={'primary'}>
+          修改
+        </Button>
+        <Button
+          onClick={() => remove(props.type, props.id)}
+          danger
+        >
+          删除
+        </Button>
       </Space>
       <Modal
         title={props.text}
