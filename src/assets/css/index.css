@@ -132,6 +132,7 @@ body {
 }
 
 .detail-container {
+  height: 100vh;
   background-image: url('@/assets/poem4.jpeg');
   background-repeat: no-repeat;
   background-size: cover;
@@ -168,4 +169,8 @@ body {
 
 .ant-card .ant-card-body {
   padding: 0;
+}
+
+.ant-table-content {
+  font-size: 18px;
 }
