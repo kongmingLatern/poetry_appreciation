@@ -17,8 +17,8 @@ export default function Cards() {
     getData()
   }, [])
 
-  const search = () => {
-    setSearch(true)
+  const search = (flag) => {
+    setSearch(flag)
   }
 
   return (

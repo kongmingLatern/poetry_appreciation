@@ -12,14 +12,21 @@ export default function SearchInput({ search }) {
   const navigate = useNavigate()
 
   const onSearch = async (value: string) => {
-    const res = await http.get('/getAllPoem', {
-      params: {
-        pname: value,
-      },
-    })
+    let res
+    if (value !== '') {
+      res = await http.get('/getAllPoem', {
+        params: {
+          pname: value,
+        },
+      })
+      setBegin(false)
+      search(true)
+    } else {
+      res = await http.get('/getAllPoem')
+      setBegin(true)
+      search(false)
+    }
     setData(res.data)
-    search()
-    setBegin(false)
   }
 
   return (
@@ -43,7 +50,7 @@ export default function SearchInput({ search }) {
           <Divider />
         </>
       ) : (
-        <Empty />
+        <Empty description={<span>暂无结果</span>} />
       )}
     </>
   )
