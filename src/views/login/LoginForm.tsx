@@ -17,7 +17,7 @@ const App: React.FC = () => {
       message.success('自动登录')
     }
   }, [])
-  const onFinish = async (values: any) => {
+  const onFinish = async (values: Record<string, any>) => {
     if (values) {
       const res: Record<string, any> = await http.post(
         '/login',
@@ -37,7 +37,7 @@ const App: React.FC = () => {
         message.error(res.msg)
       }
     } else {
-      message.error('请输入用户名和密码')
+      message.error('用户名和密码不能为空')
     }
   }
 
