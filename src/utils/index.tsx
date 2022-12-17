@@ -44,27 +44,6 @@ export async function remove(type: string, id: string) {
   window.location.reload()
 }
 
-export async function change(type: string, id: string) {
-  let res
-  // switch (type) {
-  //   case 'poem':
-  //     res = await http.post('/updatePoem', {
-  //       pid: id,
-  //     })
-  //     break
-  //   case 'user':
-  //     res = await http.post('/deleteUser', {
-  //       uid: id,
-  //     })
-  // }
-  // if (res.code === 200) {
-  //   message.success(res.msg)
-  // } else {
-  //   message.error(res.msg)
-  // }
-  // window.location.reload()
-}
-
 export {
   getData,
   getPoemData,
