@@ -1,4 +1,3 @@
-import Header from '@/components/Headers'
 import RegisterForm from '@/views/login/RegisterForm'
 
 export default function Register() {
