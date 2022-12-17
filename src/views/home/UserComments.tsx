@@ -1,4 +1,6 @@
-import List from '@/views/detail/List'
+import UserList from '@/views/detail/DetailList'
 export default function UserComments({ data }) {
-  return <List comments={data.comments} pid={data.pid} />
+  return (
+    <UserList comments={data.comments} pid={data.pid} />
+  )
 }

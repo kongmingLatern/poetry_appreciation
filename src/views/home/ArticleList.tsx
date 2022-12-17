@@ -1,8 +1,8 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { List } from 'antd'
 import http from '@/api'
 
-const App: React.FC = () => {
+const ArticleList = () => {
   const [data, setData] = useState([])
   useEffect(() => {
     async function getData() {
@@ -55,4 +55,4 @@ const App: React.FC = () => {
   )
 }
 
-export default App
+export default ArticleList
