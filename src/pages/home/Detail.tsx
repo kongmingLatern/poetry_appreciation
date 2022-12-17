@@ -1,17 +1,17 @@
 import http from '@/api'
 import Header from '@/components/Headers'
-import List from '@/views/detail/List'
 import AuthorDesc from '@/views/home/AuthorDesc'
 import PAppreciation from '@/views/home/PAppreciation'
 import PDesc from '@/views/home/PDesc'
-import { Divider, Tabs } from 'antd'
+import { Tabs } from 'antd'
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import UserComments from '../../views/home/UserComments'
+
 export default function Detail() {
   const [data, setData] = useState<any>({})
   const param = useParams()
-  const list = [
+  const dataList = [
     {
       label: '作者介绍',
       element: <AuthorDesc data={data} />,
@@ -54,7 +54,7 @@ export default function Detail() {
         <Tabs
           defaultActiveKey="1"
           centered
-          items={list.map((item, i) => {
+          items={dataList.map((item, i) => {
             const id = String(i + 1)
             return {
               label: item.label,
