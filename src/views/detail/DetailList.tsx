@@ -53,26 +53,33 @@ const releaseComment = async (comment, pid) => {
 
 const App: any = ({ comments, pid }) => {
   const [value, setValue] = useState<string>('')
+  const imgUrl = [
+    'https://tva1.sinaimg.cn/large/466f79e8ly1fw5oi9coj2j20nm0go15j.jpg',
+    'https://tva1.sinaimg.cn/large/466f79e8ly1fw5oha9y5xj21hc0w515j.jpg',
+    'https://tva1.sinaimg.cn/large/466f79e8ly1fw5oi8j6wpj20rq0hwq9v.jpg',
+    'https://tva1.sinaimg.cn/large/466f79e8ly1fw5ohbvfenj23ji294e3o.jpg',
+  ]
+
   const result = (
     <>
       <div className="text-right pr-5 w-100 mx-auto">
         <TextArea
-          className="w-100"
+          className="w-100 relative"
           showCount
-          maxLength={100}
+          maxLength={150}
           placeholder="输入评论"
           onChange={e => setValue(e.target.value)}
           onPressEnter={() => releaseComment(value, pid)}
         />
-      </div>
-      <div className="text-right">
         <Button
-          type="primary"
+          type="link"
+          className="absolute right-20vw bg-pink-500 color-white z-2"
           onClick={() => releaseComment(value, pid)}
         >
           发布评论
         </Button>
       </div>
+
       <List
         className="p-2"
         itemLayout="horizontal"
@@ -89,7 +96,11 @@ const App: any = ({ comments, pid }) => {
           >
             <List.Item.Meta
               avatar={
-                <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                <Avatar
+                  src={
+                    imgUrl[Math.floor(Math.random() * 3)]
+                  }
+                />
               }
               title={
                 <a href="https://ant.design">
