@@ -19,26 +19,38 @@ export const columns: ColumnsType<CommentType> = [
     dataIndex: 'no',
     key: 'no',
     render: (_, __, index) => index + 1,
+    ellipsis: true
   },
   {
     title: '古诗名字',
     dataIndex: 'pname',
     key: 'pname',
+    ellipsis: true
   },
   {
     title: '评论内容',
     dataIndex: 'comment',
     key: 'comment',
+    ellipsis: true
   },
   {
     title: '评论用户',
     dataIndex: 'username',
     key: 'username',
+    ellipsis: true
+  },
+  {
+    title: '点赞数',
+    key: 'like',
+    dataIndex: 'like',
+    render: () => 156,
+    ellipsis: true
   },
   {
     title: '评论时间',
     dataIndex: 'commentTime',
     key: 'commentTime',
+    ellipsis: true
   },
   {
     title: '操作',

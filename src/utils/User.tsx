@@ -18,21 +18,25 @@ export const columns: ColumnsType<UserType> = [
     dataIndex: 'no',
     key: 'no',
     render: (_, __, index) => index + 1,
+    ellipsis: true
   },
   {
     title: '用户名',
     dataIndex: 'username',
     key: 'username',
+    ellipsis: true
   },
   {
     title: '密码',
     dataIndex: 'password',
     key: 'password',
+    ellipsis: true
   },
   {
     title: '权限',
     dataIndex: 'isAuth',
     key: 'isAuth',
+    ellipsis: true
   },
   {
     title: '操作',
