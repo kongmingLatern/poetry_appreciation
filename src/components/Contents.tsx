@@ -19,19 +19,17 @@ export default function Contents() {
     },
   ]
   return (
-    <>
-      <Tabs
-        defaultActiveKey="1"
-        centered
-        items={arr.map((item, i) => {
-          const id = String(i + 1)
-          return {
-            label: item.label,
-            key: id,
-            children: item.element,
-          }
-        })}
-      />
-    </>
+    <Tabs
+      defaultActiveKey="1"
+      centered
+      items={arr.map((item, i) => {
+        const id = String(i + 1)
+        return {
+          label: item.label,
+          key: id,
+          children: item.element,
+        }
+      })}
+    />
   )
 }

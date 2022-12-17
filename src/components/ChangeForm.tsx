@@ -4,7 +4,6 @@ import {
   Input,
   InputNumber,
   message,
-  Space,
 } from 'antd'
 import {
   FileTextOutlined,
@@ -51,7 +50,7 @@ const App = ({ type, isShow, id }) => {
       let res
       if (type === 'user') {
         res = await http.post('/getUserByUid', {
-          pid: id,
+          uid: id,
         })
       } else if (type === 'poem') {
         res = await http.post('/getPoemByPid', {
@@ -62,8 +61,6 @@ const App = ({ type, isShow, id }) => {
     }
     getData()
   }, [])
-
-  console.log(data)
 
   return (
     <Form
@@ -90,7 +87,7 @@ const App = ({ type, isShow, id }) => {
           >
             <Input.Password
               prefix={<LockOutlined />}
-              placeholder="请输入密码"
+              placeholder={'"请输入密码"' + data.password}
               value={data.password}
             />
           </Form.Item>
@@ -99,7 +96,11 @@ const App = ({ type, isShow, id }) => {
               min={0}
               max={1}
               prefix={<UserSwitchOutlined />}
-              placeholder="是否享有权限，0为否，1为是"
+              placeholder={
+                '是否享有权限，0为否，1为是[' +
+                data.isAuth +
+                ']'
+              }
               value={data.isAuth}
             />
           </Form.Item>
@@ -116,7 +117,7 @@ const App = ({ type, isShow, id }) => {
             <Input
               value={data.pname}
               prefix={<UserOutlined />}
-              placeholder="请输入古诗名字"
+              placeholder={data.pname}
             />
           </Form.Item>
 
@@ -127,7 +128,7 @@ const App = ({ type, isShow, id }) => {
           >
             <Input
               prefix={<UserOutlined />}
-              placeholder="请输入作者"
+              placeholder={data.author}
               value={data.author}
             />
           </Form.Item>
@@ -138,7 +139,7 @@ const App = ({ type, isShow, id }) => {
           >
             <Input
               prefix={<FileTextOutlined />}
-              placeholder="请输入作者介绍"
+              placeholder={data.authorDesc}
               value={data.authorDesc}
             />
           </Form.Item>
@@ -149,8 +150,8 @@ const App = ({ type, isShow, id }) => {
           >
             <Input
               prefix={<FileTextOutlined />}
-              placeholder="请输入古诗内容"
-              value={data.pContent}
+              placeholder={data.pcontent?.map(item => item)}
+              value={data.pcontent?.map(item => item)}
             />
           </Form.Item>
           <Form.Item
@@ -160,8 +161,7 @@ const App = ({ type, isShow, id }) => {
           >
             <Input
               prefix={<FileTextOutlined />}
-              placeholder="请输入古诗介绍"
-              value={data.pDesc}
+              placeholder={data.pDesc}
             />
           </Form.Item>
           <Form.Item
@@ -171,8 +171,7 @@ const App = ({ type, isShow, id }) => {
           >
             <Input
               prefix={<FileTextOutlined />}
-              placeholder="请输入诗句鉴赏"
-              value={data.pAppreciation}
+              placeholder={data.pAppreciation}
             />
           </Form.Item>
         </>

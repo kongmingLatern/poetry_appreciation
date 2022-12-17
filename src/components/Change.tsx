@@ -1,8 +1,7 @@
 import { remove } from '@/utils'
-import { Modal } from 'antd'
+import { Modal, Space } from 'antd'
 import { useState } from 'react'
 import ChangeForm from './ChangeForm'
-import Form from './Form'
 
 export default function Change(props) {
   const [isModalOpen, setIsModalOpen] = useState(false)
@@ -17,8 +16,12 @@ export default function Change(props) {
 
   return (
     <>
-      <a onClick={showModal}>修改</a>
-      <a onClick={() => remove('poem', props.id)}>Delete</a>
+      <Space>
+        <a onClick={showModal}>修改</a>
+        <a onClick={() => remove('poem', props.id)}>
+          Delete
+        </a>
+      </Space>
       <Modal
         title={props.text}
         open={isModalOpen}

@@ -15,13 +15,11 @@ const App = ({ columns, func }) => {
   }, [])
 
   return (
-    <>
-      <Table
-        columns={columns}
-        dataSource={result}
-        loading={loading}
-      />
-    </>
+    <Table
+      columns={columns}
+      dataSource={result}
+      loading={loading}
+    />
   )
 }
 
